@@ -9,12 +9,16 @@ const generTemplate = todo => {
             <i class="bi bi-trash delete"></i>
         </li>
         `;
-
-};
+    list.innerHTML += html;
+};                 // appends
 //add new todo
 addForm.addEventListener('submit', e => {
     e.preventDefault();
     const todo = addForm.add.value.trim(); //trim cuts out uneccessary white space
     
-    generTemplate(todo);
+    // check if has length
+    if (todo.length) {
+      generTemplate(todo);
+      addForm.reset();  //for forms we query on the DOM, clears forms
+    }
 });
