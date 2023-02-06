@@ -1,5 +1,6 @@
 const addForm = document.querySelector('.add');
 const list = document.querySelector('.todos');// ul
+const search = document.querySelector('.search input')
 
 
 // html template
@@ -19,7 +20,7 @@ addForm.addEventListener('submit', e => {
     e.preventDefault();
     const todo = addForm.add.value.trim(); //trim cuts out uneccessary white space
     
-    // check if has length
+    // check if 'if' has length
     if (todo.length) {
       generTemplate(todo);
       addForm.reset();  //for forms we query on the DOM, clears forms
@@ -33,4 +34,15 @@ list.addEventListener('click', e => {
         e.target.parentElement.remove();
     }
 
+});
+
+
+const filterTodos = (term) => {  // outside of event in order to use it elsewhere
+    console.log(term);
+};
+
+// one way to filter |  keyup event
+search.addEventListener('keyup', () =>{
+    const term = search.value.trim();
+    filterTodos(term);
 });
