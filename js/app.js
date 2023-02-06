@@ -40,7 +40,7 @@ list.addEventListener('click', e => {
 const filterTodos = (term) => {  // outside of event in order to use it elsewhere
     Array.from(list.children)
         .filter(todo => {
-            return todo.textContent.includes(term); //searches term to see if it passes check
+            return !todo.textContent.includes(term); //searches term to see if it passes check
         })
 };
 
