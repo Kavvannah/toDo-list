@@ -29,26 +29,23 @@ addForm.addEventListener('submit', e => {
 
 //delete todos
 list.addEventListener('click', e => {
-
     if(e.target.classList.contains('delete')){
         e.target.parentElement.remove();
     }
-
 });
-
 
 const filterTodos = (term) => {  // outside of event in order to use it elsewhere
     Array.from(list.children)
-        .filter((todo) => !todo.textContent.includes(term)) //searches term to see if it passes check
+        .filter((todo) => !todo.textContent.toLowerCase.includes(term)) //searches term to see if it passes check
         .forEach((todo) => todo.classList.add('filtered'));
 
-        Array.from(list.children)
-        .filter((todo) => todo.textContent.includes(term)) 
+    Array.from(list.children)
+        .filter((todo) => todo.textContent.toLowerCase.includes(term)) 
         .forEach((todo) => todo.classList.remove('filtered'));
 };
 
 // one way to filter |  keyup event
-search.addEventListener('keyup', () =>{
-    const term = search.value.trim();
+search.addEventListener('keyup', () => {
+    const term = search.value.trim().toLowerCase();
     filterTodos(term);
 });
