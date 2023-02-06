@@ -39,9 +39,8 @@ list.addEventListener('click', e => {
 
 const filterTodos = (term) => {  // outside of event in order to use it elsewhere
     Array.from(list.children)
-        .filter(todo => {
-            return !todo.textContent.includes(term); //searches term to see if it passes check
-        })
+        .filter((todo => !todo.textContent.includes(term)) //searches term to see if it passes check
+        .forEach(() => todo.classList.add('filtered')));
 };
 
 // one way to filter |  keyup event
