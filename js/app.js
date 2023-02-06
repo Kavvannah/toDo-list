@@ -1,5 +1,7 @@
 const addForm = document.querySelector('.add');
-const list = document.querySelector('.todos');
+const list = document.querySelector('.todos');// ul
+
+
 // html template
 const generTemplate = todo => {
     
@@ -11,6 +13,7 @@ const generTemplate = todo => {
         `;
     list.innerHTML += html;
 };                 // appends
+
 //add new todo
 addForm.addEventListener('submit', e => {
     e.preventDefault();
@@ -21,4 +24,13 @@ addForm.addEventListener('submit', e => {
       generTemplate(todo);
       addForm.reset();  //for forms we query on the DOM, clears forms
     }
+});
+
+//delete todos
+list.addEventListener('click', e => {
+
+    if(e.target.classList.contains('delete')){
+        e.target.parentElement.remove();
+    }
+
 });
